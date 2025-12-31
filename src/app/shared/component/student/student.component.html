@@ -3,16 +3,16 @@
     <div class="col-md-4">
         <div class="form-group">
             <label for="fname">fname</label>
-            <input type="text" class="form-control">
+            <input type="text" #fname class="form-control">
              <label for="fname">lname</label>
-            <input type="text" class="form-control">
+            <input type="text" #lname class="form-control">
              <label for="fname">email</label>
-            <input type="text" class="form-control">
+            <input type="text" #email class="form-control">
              <label for="fname">conatct</label>
-            <input type="text" class="form-control">
+            <input type="text" #contact class="form-control">
 
         </div>
-          <button mat-raised-button class="btn btn-block" color="primary">Add Student</button>
+          <button mat-raised-button class="btn btn-block" color="primary" (click)="onAdd()">Add Student</button>
     </div>
 
 
@@ -38,8 +38,8 @@
       <td>{{ st.lname }}</td>
       <td>{{ st.email }}</td>
       <td>{{ st.contact }}</td>
-      <td><button mat-raised-button color="primary">Edit</button></td>
-      <td><button mat-raised-button color="warn">Delete</button></td>
+      <td><button mat-raised-button color="primary" (click)="onEdit(st)">Edit</button></td>
+      <td><button mat-raised-button color="warn" (click)="onRemove(st.id)">Delete</button></td>
     </tr>
   </tbody>
 </table>
