@@ -1,0 +1,99 @@
+<!-- HEADING -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="alert alert-info mt-5 text-center">
+        {{ isIneditmode ? "Update Student" : "Add Student" }}
+      </h2>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTAINER -->
+<div class="container my-5">
+  <div class="row">
+
+    <!-- LEFT SIDE : FORM -->
+    <div class="col-md-6 mb-4">
+      <div class="card p-3 bg-dark text-white">
+
+        <div class="form-group mb-3">
+          <label><strong>First Name</strong></label>
+          <input type="text" #fname class="form-control">
+        </div>
+
+        <div class="form-group mb-3">
+          <label><strong>Last Name</strong></label>
+          <input type="text" #lname class="form-control">
+        </div>
+
+        <div class="form-group mb-3">
+          <label><strong>Email</strong></label>
+          <input type="email" #email class="form-control">
+        </div>
+
+        <div class="form-group mb-3">
+          <label><strong>Contact</strong></label>
+          <input type="text" #contact class="form-control">
+        </div>
+
+        <div class="form-group mb-3">
+          <label><strong>City</strong></label>
+          <input type="text" #city class="form-control">
+        </div>
+
+        <!-- BUTTONS -->
+        <button *ngIf="!isIneditmode" (click)="onStdAdd()" mat-raised-button color="primary" class="w-100 mb-2">
+          Add Student
+        </button>
+
+        <button *ngIf="isIneditmode" (click)="onUpdate()" mat-raised-button color="warn" class="w-100">
+          Update Student
+        </button>
+
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE : TABLE -->
+    <div class="col-md-6">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+
+          <thead class="table-dark">
+            <tr>
+              <th>Sr No.</th>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Contact</th>
+              <th>Edit</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let std of studentarray; let i = index;">
+              <td>{{ i + 1 }}</td>
+              <td>{{ std.fname }} {{ std.lname }}</td>
+              <td>{{ std.email }}</td>
+              <td>{{ std.contact }}</td> 
+
+               <td class="text-center">
+                <button (click)="onEdit(std)" mat-mini-fab color="primary">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td> 
+
+              <td class="text-center">
+                <button (click)="onRemove(std.id)" mat-mini-fab color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+             </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div> 
